@@ -45,6 +45,7 @@ int main()
     return 0;
 }
 
+// Decimal to Binary
 long long decimal_binary(int x)
 {
     long long number_binary = 0;
@@ -59,6 +60,7 @@ long long decimal_binary(int x)
     return number_binary;
 }
 
+// Binary to Decimal
 int binary_decimal(long long x)
 {
     int decimal_number = 0, i = 0, creator;
@@ -72,6 +74,7 @@ int binary_decimal(long long x)
     return decimal_number;
 }
 
+// Decimal to Octal
 long long decimal_octal(int x)
 {
     long long number_octal = 0;
@@ -86,6 +89,7 @@ long long decimal_octal(int x)
     return number_octal;
 }
 
+// Octal to Decimal
 int octal_decimal(long long x)
 {
     int decimal_number = 0, i = 0, creator;
