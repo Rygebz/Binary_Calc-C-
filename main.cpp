@@ -1,7 +1,5 @@
 #include <iostream>
 #include <cmath>
-#include <math.h>
-using namespace std;
 
 long long decimal_binary(int);
 int binary_decimal(long long);
@@ -10,7 +8,7 @@ int octal_decimal(long long);
 
 int main()
 {
-    cout << "Hello into Binary_calculator!" << endl;
+    std::cout << "Hello into Binary_calculator!" << std::endl;
     int x, binary_number, number_binary, number_octal, octal_number, number_hex;
     char op;
     std::cout << "\n Enter an operation:";
@@ -18,33 +16,32 @@ int main()
     std::cin >> op;
     std::cout << "\n Enter number: ";
     std::cin >> x;
-    while(op == '1')
+    while(op != 'e')
     {
-        number_binary = decimal_binary(x);
-        cout << x << " in decimal = " << number_binary << " in binary" << endl;
-    break;
-    }
-    while(op == '2')
-    {
-        binary_number = binary_decimal(x);
-        cout << x << " in binary = " << binary_number << " in decimal" << endl;
-    break;
-    }
-    while(op == '3')
-    {
-        number_octal = decimal_octal(x);
-        cout << x << " in decimal = " << number_octal << " in octal" << endl;
-    break;
-    }
-    while(op == '4')
-    {
-        octal_number = octal_decimal(x);
-        cout << x << " in octal = " << octal_number << " in decimal" << endl;
-    break;
-    }
+        if(op == '1')
+            {
+            number_binary = decimal_binary(x);
+            std::cout << x << " in decimal = " << number_binary << " in binary" << std::endl;
+            }
+        if(op == '2')
+            {
+            binary_number = binary_decimal(x);
+            std::cout << x << " in binary = " << binary_number << " in decimal" << std::endl;
+            }
+        if(op == '3')
+            {
+            number_octal = decimal_octal(x);
+            std::cout << x << " in decimal = " << number_octal << " in octal" << std::endl;
+            }
+        if(op == '4')
+            {
+            octal_number = octal_decimal(x);
+            std::cout << x << " in octal = " << octal_number << " in decimal" << std::endl;
+            }
+        break;
     return 0;
+    }
 }
-
 // Decimal to Binary
 long long decimal_binary(int x)
 {
