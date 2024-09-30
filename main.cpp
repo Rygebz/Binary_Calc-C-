@@ -1,101 +1,108 @@
 #include <iostream>
 #include <cmath>
 
-long long decimal_binary(int);
-int binary_decimal(long long);
-long long decimal_octal(int);
-int octal_decimal(long long);
+// Function declarations
+long long decimal_to_binary(int);
+int binary_to_decimal(long long);
+long long decimal_to_octal(int);
+int octal_to_decimal(long long);
 
 int main()
 {
-    std::cout << "Hello into Binary_calculator!" << std::endl;
-    int x, binary_number, number_binary, number_octal, octal_number, number_hex;
-    char op;
-    std::cout << "\n Enter an operation:";
-    std::cout << "\n 1 - Decimal to Binary, \n 2 - Binary to Decimal, \n 3 - Decimal to Octal, \n 4 - Octal to Decimal: ";
-    std::cin >> op;
-    std::cout << "\n Enter number: ";
-    std::cin >> x;
-    while(op != 'e')
-    {
-        if(op == '1')
-            {
-            number_binary = decimal_binary(x);
-            std::cout << x << " in decimal = " << number_binary << " in binary" << std::endl;
-            }
-        if(op == '2')
-            {
-            binary_number = binary_decimal(x);
-            std::cout << x << " in binary = " << binary_number << " in decimal" << std::endl;
-            }
-        if(op == '3')
-            {
-            number_octal = decimal_octal(x);
-            std::cout << x << " in decimal = " << number_octal << " in octal" << std::endl;
-            }
-        if(op == '4')
-            {
-            octal_number = octal_decimal(x);
-            std::cout << x << " in octal = " << octal_number << " in decimal" << std::endl;
-            }
-        break;
+    std::cout << "Welcome to the Number System Converter!" << std::endl;
+
+    int number;
+    char option;
+    
+    std::cout << "\nChoose an operation:\n";
+    std::cout << "1 - Decimal to Binary\n";
+    std::cout << "2 - Binary to Decimal\n";
+    std::cout << "3 - Decimal to Octal\n";
+    std::cout << "4 - Octal to Decimal\n";
+    std::cout << "Enter your choice (1/2/3/4): ";
+    std::cin >> option;
+
+    std::cout << "\nEnter the number: ";
+    std::cin >> number;
+
+    switch(option) {
+        case '1': {
+            long long binary = decimal_to_binary(number);
+            std::cout << number << " in decimal = " << binary << " in binary\n";
+            break;
+        }
+        case '2': {
+            int decimal = binary_to_decimal(number);
+            std::cout << number << " in binary = " << decimal << " in decimal\n";
+            break;
+        }
+        case '3': {
+            long long octal = decimal_to_octal(number);
+            std::cout << number << " in decimal = " << octal << " in octal\n";
+            break;
+        }
+        case '4': {
+            int decimal = octal_to_decimal(number);
+            std::cout << number << " in octal = " << decimal << " in decimal\n";
+            break;
+        }
+        default:
+            std::cout << "Invalid option selected!" << std::endl;
+    }
+
     return 0;
-    }
 }
-// Decimal to Binary
-long long decimal_binary(int x)
-{
-    long long number_binary = 0;
-    int creator, i = 10;
-    while(x != 0)
-    {
-        creator = x%2;
-        x /= 2;
-        number_binary += creator * i;
+
+// Decimal to Binary conversion
+long long decimal_to_binary(int decimal) {
+    long long binary = 0;
+    int remainder, i = 1;
+    
+    while (decimal != 0) {
+        remainder = decimal % 2;
+        decimal /= 2;
+        binary += remainder * i;
         i *= 10;
     }
-    return number_binary;
+    return binary;
 }
 
-// Binary to Decimal
-int binary_decimal(long long x)
-{
-    int decimal_number = 0, i = 0, creator;
-    while(x != 0)
-    {
-        creator = x%10;
-        x /= 10;
-        decimal_number += creator*pow(2, i);
+// Binary to Decimal conversion
+int binary_to_decimal(long long binary) {
+    int decimal = 0, remainder, i = 0;
+    
+    while (binary != 0) {
+        remainder = binary % 10;
+        binary /= 10;
+        decimal += remainder * pow(2, i);
         ++i;
     }
-    return decimal_number;
+    return decimal;
 }
 
-// Decimal to Octal
-long long decimal_octal(int x)
-{
-    long long number_octal = 0;
-    int creator, i = 1;
-    while(x != 0)
-    {
-        creator = x%8;
-        x /= 8;
-        number_octal += creator * i;
+// Decimal to Octal conversion
+long long decimal_to_octal(int decimal) {
+    long long octal = 0;
+    int remainder, i = 1;
+    
+    while (decimal != 0) {
+        remainder = decimal % 8;
+        decimal /= 8;
+        octal += remainder * i;
         i *= 10;
     }
-    return number_octal;
+    return octal;
 }
 
-// Octal to Decimal
-int octal_decimal(long long x)
-{
-    int decimal_number = 0, i = 0, creator;
-    while(x != 0)
-    {
-        creator = x%10;
-        x /= 10;
-        decimal_number += creator*pow(8, i);
+// Octal to Decimal conversion
+int octal_to_decimal(long long octal) {
+    int decimal = 0, remainder, i = 0;
+    
+    while (octal != 0) {
+        remainder = octal % 10;
+        octal /= 10;
+        decimal += remainder * pow(8, i);
         ++i;
     }
-    return decimal_number;
+    return decimal;
 }
